@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('nav.ejs') %>
+    <h2>메인</h2>
+    <% if(user == null){ %>
+        <h1>로그인해주세요</h1>
+        
+    <% } else { %>
+        <h1><%= user.username %>님 안녕하세요.</h1>
+    <% } %>
+    
+</body>
+</html>

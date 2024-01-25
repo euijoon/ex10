@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('nav.ejs') %>
+  <%- room_id %>
+    <div class="detail-bg">
+        <div class="chat-screen">
+          <div class="chat-box"><span>안녕하세요</span></div>
+          <div class="chat-box"><span>안녕하세요</span></div>
+          <div class="chat-box mine"><span>안녕하세요</span></div>
+        </div>
+      </div>
+      <div class="chat-form">
+        <input class="chat-input">
+        <button class="chat-button">전송</button>
+  </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/socket.io@4.7.2/client-dist/socket.io.min.js"></script>
+<script>
+  const socket = io() 
+  socket.emit('join', '<%= room_id %>')
+
+  document.querySelector('.chat-button').addEventListener('click', function(){
+    let text = document.querySelector('.chat-input').value
+    document.querySelector('.chat-input').value = ""
+    socket.emit('msg', { msg : text, room : '<%= room_id %>' })
+  })
+  socket.on('boradcast', (data) => {
+    document.querySelector('.chat-screen').insertAdjacentHTML('beforeend', `<div class="chat-box"><span>${data}</span></div>`)
+  })
+  
+
+
+</script>
+
+</body>
+</html>

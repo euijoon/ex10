@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('nav.ejs') %>
+    <h1>채팅</h1>
+    <h5><a href="/chat_creat/<%= user._id %>">채팅방 만들기</a></h5>
+
+    <% for(let i = 0; i < result.length; i++){ %>
+        <div>
+            <h1><%= i + 1 %>. <a href="/chat/<%= result[i]._id %>"><%= result[i].title %></a> </h1>
+        </div>
+    <% } %>
+</body>
+</html>
