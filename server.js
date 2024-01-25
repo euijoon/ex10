@@ -21,7 +21,7 @@ const url = process.env.mongodb_Url;
 new MongoClient(url).connect().then((client)=>{
   console.log('DB연결성공');
   db = client.db('forum');
-  server.listen(process.env.PORT, () => {
+  app.listen(process.env.PORT, () => {
     console.log("http://localhost:" + process.env.PORT)
 });
 }).catch((err)=>{
